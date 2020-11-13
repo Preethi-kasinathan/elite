@@ -1,0 +1,65 @@
+<div class="form-box">
+  <h1>Simple Bootstrap Form</h1>
+  <link href="css/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" href="plugins/datetimepicker/bootstrap-datetimepicker.css" />
+<link href="css/custom.css" rel="stylesheet" />
+  <p>Using <a href="https://getbootstrap.com">Bootstrap</a> and <a href="https://www.formbucket.com">FormBucket</a></p>
+  <form action="https://api.formbucket.com/f/c2K3QTQ" method="post">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input class="form-control" id="name" type="text" name="Name">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input class="form-control" id="email" type="email" name="Email">
+    </div>
+    <div class="form-group">
+      <label for="pno">Phone number</label>
+      <input class="form-control" id="pno" type="number" name="pno">
+      
+    </div>
+     <div class="form-group">
+       <label for="pno">dob</label>
+              <div class='input-group date' id='datetimepicker1'>
+                <input type='text' class="form-control"  />
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
+       <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Age:</label> <input type="text" id="age" class="form-control"/>
+        </div>
+      </div>
+    </div>
+   </textarea>
+  
+    </div>
+    <input class="btn btn-primary" type="submit" value="Submit" />
+    </div>
+
+<script src="js/bootstrap.js"></script>
+<script type="text/javascript" src="plugins/moment/moment.min.js"></script>
+<script type="text/javascript" src="plugins/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script>
+function setAge(d)
+{
+  var age = moment().diff(d, 'years', true);
+  $('#age').val(age);
+  
+}
+ 
+$(function() {
+  $('.manual').change(function() {
+    var isoDate = new Date($(this).val()).toISOString();
+    setAge(moment(isoDate));
+  });
+  
+  $('#datetimepicker1').datetimepicker().on('dp.change', function(e) {
+    setAge(e.date);
+  });
+});
+</script>
+  </form>
+</div>
